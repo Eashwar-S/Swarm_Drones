@@ -1,0 +1,30 @@
+<launch>
+
+    <!-- World File -->
+    <arg name="world_file" default="$(find hector_quadrotor_gazebo)/world/empty.world"/>
+
+    <!-- Launch Gazebo World -->
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="use_sim_time" value="true"/>
+        <arg name="debug" value="false"/>
+        <arg name="gui" value="true" />
+        <arg name="world_name" value="$(arg world_file)"/>
+    </include>
+
+    <group ns="drone1">
+        <include file="$(find hector_quadrotor_gazebo)/launch/spawn_quadrotor.launch">
+            <arg name="name" value="drone1" />
+            <arg name="tf_prefix" value="drone1" />
+            <arg name="y" value="-1.0" />
+        </include>
+    </group>
+
+    <group ns="drone2">
+        <include file="$(find hector_quadrotor_gazebo)/launch/spawn_quadrotor.launch">
+            <arg name="name" value="drone2" />
+            <arg name="tf_prefix" value="drone2" />
+            <arg name="y" value="1.0" />
+        </include>
+    </group>
+
+</launch>
