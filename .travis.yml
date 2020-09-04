@@ -76,6 +76,7 @@ before_install:
   - sudo apt-get update -qq
   - sudo apt-get install dpkg
   - sudo apt-get install -y --allow-unauthenticated python-catkin-pkg python-rosdep python-wstool ros-$ROS_DISTRO-ros-base
+  - curl -sSL http://get.gazebosim.org | sh
 
    # install lcov to generate code coverage data
   - sudo apt-get install -y lcov
