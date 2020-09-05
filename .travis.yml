@@ -76,7 +76,12 @@ before_install:
   - sudo apt-get update -qq
   - sudo apt-get install dpkg
   - sudo apt-get install -y --allow-unauthenticated python-catkin-pkg python-rosdep python-wstool ros-$ROS_DISTRO-ros-base
-  - git clone https://github.com/ros-simulation/gazebo_ros_pkgs.git
+  - sudo sh -c 'echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb_release -cs` main" > /etc/apt/sources.list.d/gazebo-stable.list'
+  - cat /etc/apt/sources.list.d/gazebo-stable.list
+  - wget https://packages.osrfoundation.org/gazebo.key -O - | sudo apt-key add -
+  - sudo apt-get update
+  - sudo apt-get install gazebo9
+  - sudo apt-get install libgazebo9-dev
 
    # install lcov to generate code coverage data
   - sudo apt-get install -y lcov
